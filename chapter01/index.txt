@@ -1,0 +1,12 @@
+1-1. Concatenating Two or More Strings
+    Problem: You want to merge two or more stings into one.
+    Solution: Concatenate the strings using the addition (+) operator.
+
+1-2. Concatenating a String and Another Data Type
+    Problem: You want to concatenate a string with another data type, such as a number.
+    Solution: Use the exact same operators, such as addition (+) and shorthand assignment (+=), you use when concatenating
+        stings.
+
+1-3. Conditionally Comparing Strings
+    Problem: You want to compare two strings to see if they're the same.
+    Solution: Use the equality operator (==) within a conditional test.

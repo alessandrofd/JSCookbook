@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>Comparing objects and literals</h3>
+    <p id="test1"></p>
+    <p id="test2"></p>
+    <h3>Lexical comparison</h3>
+    <p id="lexical_comparison1"></p>
+    <p id="lexical_comparison2"></p>
+    <script>
+        var strName = prompt("What's your name?", "");
+
+        if (strName == "Shelley") {
+            alert("Your name is Shelley! Good for you!");
+        } else {
+            alert("Your name isn't Shelley. Bummer.");
+        }
+
+        var strObject = new String("Shelley");
+        var strLiteral = "Shelley";
+
+        var strTest = "strObject == strLiteral";
+        if (strObject == strLiteral) {
+            strTest += " succeeds";
+        } else {
+            strTest += " fails";
+        }
+        document.getElementById("test1").innerHTML = strTest;
+
+        strTest = "strObject === strLiteral";
+        if (strObject === strLiteral) {
+            strTest += " succeeds";
+        } else {
+            strTest += " fails";
+        }
+        document.getElementById("test2").innerHTML = strTest;
+
+        var sOne = "cat";
+        var sTwo = "dog";
+        strTest = sOne + " < " + sTwo;
+        if (sOne < sTwo) {
+            strTest += " succeeds";
+        } else {
+            strTest += " fails";
+        }
+        document.getElementById("lexical_comparison1").innerHTML = strTest;
+
+        sOne = "Cat";
+        sTwo = "cat";
+        strTest = sOne + " < " + sTwo;
+        if (sOne < sTwo) {
+            strTest += " succeeds";
+        } else {
+            strTest += " fails";
+        }
+        document.getElementById("lexical_comparison2").innerHTML = strTest;
+
+
+
+    </script>
+
+</body>
+</html>

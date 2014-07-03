@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function() {
+            // get the keyword list
+            var keywordList = prompt("Enter keywords, separated by commas.", "");
+
+            // use split to create array of keywords
+            var arrayList = keywordList.split(",");
+
+            // build result HTML
+            var resultString = "";
+            for (var i = 0; i < arrayList.length; i++) {
+                resultString += "keyword: " + arrayList[i] + "<br/>"
+            }
+
+            // print out to page
+            var blk = document.getElementById("result");
+            blk.innerHTML = resultString;
+        }
+    </script>
+</head>
+<body>
+    <div id="result"></div>
+
+</body>
+</html>

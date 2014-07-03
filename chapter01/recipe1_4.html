@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p id="recipe"></p>
+    <script>
+        var testValue = "This is the Cookbook's test value";
+        var subsValue = "Cookbook";
+        var iValue = testValue.indexOf(subsValue);
+        if (iValue != -1) { // true if substring found
+            document.getElementById("recipe").innerHTML = "substring found";
+        } else {
+            document.getElementById("recipe").innerHTML = "substring NOT found";
+        }
+    </script>
+
+</body>
+</html>

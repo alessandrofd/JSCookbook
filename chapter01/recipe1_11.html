@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 1-11. Left- or Right-Pad a String</title>
+</head>
+<body>
+    <div id="result"></div>
+    <script>
+        var prefLineLength = 20;
+        var oldString = "This is a string";
+
+        var diff = prefLineLength - oldString.length;
+        var filler = '&nbsp';
+        for (var i = 0;  i < diff; i++) {
+            oldString = filler + oldString;
+        }
+
+        document.getElementById("result").innerHTML = oldString;
+
+    </script>
+
+</body>
+</html>

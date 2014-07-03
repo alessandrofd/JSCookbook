@@ -10,3 +10,45 @@
 1-3. Conditionally Comparing Strings
     Problem: You want to compare two strings to see if they're the same.
     Solution: Use the equality operator (==) within a conditional test.
+
+1-4. Finding a Substring in a String
+    Problem: You want to find out if a substring, a particular series of characters, exist in a string.
+    Solution: Use the String object's built-in indexOf method to find the position of the substring, if it exists.
+
+1-5. Extracting a Substring from a String
+    Problem: You have a string with several sentences, one of which has a list of items. The list begins with a colon
+        (:) and ends with a period (.). You want to extract just the list.
+    Solution: Use the indexOf String method to locate the colon, and then use it again to find the first period following
+        the colon. With these two locations, extract the string using the String substring method.
+
+1-6. Checking for an Existing, Nonempty String
+    Problem: You want to check that a variable is defined, is a string, and is not empty.
+    Solution: Use a combination of typeof operator, the general valueOf method (which all JavaScript objects share), and
+        the String length property to create a conditional test that ensures a variable is set, is a string, and is not
+        empty.
+
+1-7. Breaking a Keyword String into Separate Keywords
+    Problem: You have a string with keywords, separated by commas. You want to break the string into an array of separate
+        keywords, and the print the keywords out with a keyword label.
+    Solution: Use the String method to split the string on the commas. Loop through the array, printing out the separate
+        values.
+
+1-8. Inserting Special Characters
+    Problem: You want to insert a special character, such as a line feed, into a string.
+    Solution: Use one of the escape sequences in the string. For instance, to add the copyright symbol into a block of
+        text to be added to the page, use the escape sequence \u00A9.
+
+1-9. Processing Individual Lines of a textarea
+    Problem: You want to be able to process individual lines from a textarea box.
+    Solution: Use the String split method, combined with the line break escape sequence (\n) to split the contents of the
+        textarea into its separate lines.
+
+1-10. Trimming Whitespaces from the Ends of a String
+    Problem: You want to trim the whitespace around a string that you've accessed from a from element.
+    Solution: Use the new ECMAScript 5 String trim method.
+
+1-11. Left- or Right-Pad a String
+    Problem: You need to create a string that's left- or right-padded with a given character.
+    Solution: Test the length of the string, then generate a padding string consisting of duplications of a given character
+        to either concatenate to the original string (if padding to the right) or attaching to the beginning of the string
+        (if padding to the left).

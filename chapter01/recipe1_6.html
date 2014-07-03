@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p id="recipe"></p>
+    <script>
+        var unknownVariable = "string";
+        if (((typeof unknownVariable != "undefined") &&
+                (typeof unknownVariable.valueOf() == "string")) &&
+                (unknownVariable.length > 0)) {
+            document.getElementById("recipe").innerHTML = "string OK";
+        } else {
+            document.getElementById("recipe").innerHTML = "string NOT OK";
+        }
+
+    </script>
+</body>
+</html>

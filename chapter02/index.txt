@@ -1,0 +1,9 @@
+2-1. Testing Whether a Substring Exists
+    Problem: You want to test whether a string is contained in another string.
+    Solution: Use a JavaScript regular expression to define a search pattern, and then apply the pattern against the string
+        to be searched, using the RegExp test method.
+
+2-2. Testing for Case-Insensitive Substring Matches
+    Problem: You want to test whether a string is contained in another string, but you don't care about the case of the
+        characters in either string.
+    Solution: When creating the regular expression, use the ignore case flag (i).

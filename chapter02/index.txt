@@ -7,3 +7,24 @@
     Problem: You want to test whether a string is contained in another string, but you don't care about the case of the
         characters in either string.
     Solution: When creating the regular expression, use the ignore case flag (i).
+
+2-3. Validating a Social Security Number
+    Problem: You need to validate whether a text string is a valid US-based Social Security Number.
+    Solution: Use the String match method and a regular expression to validate that a string is a Social Security Number.
+
+2-4. Finding and Highlighting All Instances of a Pattern
+    Problem: You want to find all instances of a pattern within a string.
+    Solution: Use the RegExp exec method and the global flag (g) in a loop to locate all instances of a pattern.
+
+2-5. Replacing Patterns with New Strings
+    Problem: You want to replace all matched substrings with new substrings.
+
+2-6. Swap Words in a String Using Capturing Parentheses
+    Problem: You want to accept an input string with first and last name, and swap the names so the last name is first.
+    Solution: Use capturing parentheses and a regular expression to find and remember the two names in the string, and
+        reverse them.
+2-7. Using Regular Expressions to Trim Whitespaces
+    Problem: Before sending a string to the server via an Ajax call, you want to trim the whitespace from the beginning
+        and end of the string.
+    Solution: Prior to the new ECMAScript 5 specification, you could use a regular expression to trim whitespace from
+        the beginning and end of a string.

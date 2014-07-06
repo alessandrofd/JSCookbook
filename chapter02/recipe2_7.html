@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            var testString = "     this is the string    ";
+            alert("before: [" + testString + "]");
+
+            // trim whitespace from the beginning
+            testString = testString.replace(/^\s+/, "");
+
+            // trim whitespace from the end
+            testString = testString.replace(/\s+$/, "");
+
+            alert("after: [" + testString + "]");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

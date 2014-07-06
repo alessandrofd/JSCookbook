@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function() {
+            var name = "Shelley Powers";
+            var re = /^(\w+)\s(\w+)$/;
+            var result = re.exec(name);
+            var newName = result[2] + ", " + result[1];
+            alert(newName);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

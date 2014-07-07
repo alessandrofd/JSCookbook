@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            var dt = new Date();
+
+            var year = dt.getUTCFullYear();
+
+            // get month and increment
+            var month = dt.getUTCMonth();
+            month++;
+
+            var day = dt.getUTCDate();
+            if (day < 10) day = "0" + day;
+
+            var hours = dt.getUTCHours();
+            if (hours < 10) hours = "0" + hours;
+
+            var mins = dt.getUTCMinutes();
+            if (mins < 10) mins = "0" + mins;
+
+            var secs = dt.getUTCSeconds();
+            if (secs < 0) secs = "0" + secs;
+
+            var newDate = year + "-" + month + "-" + day + "T" + hours + ":" + mins + ":" + secs + "Z";
+            alert(newDate);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

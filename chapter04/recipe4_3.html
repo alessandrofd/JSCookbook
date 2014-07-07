@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            document.onclick = ranNumber;
+        }
+
+        function ranNumber() {
+            var randomNumber = Math.floor(Math.random() * 255);
+            document.getElementById("num").innerHTML = randomNumber;
+        }
+    </script>
+</head>
+<body>
+    <p id="num"></p>
+</body>
+</html>

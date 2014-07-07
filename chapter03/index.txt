@@ -1,0 +1,43 @@
+3-1. Printing Out Today's Date
+    Problem: You want to print out hte current date and time to a web page.
+    Solution: Create a new Date object, without any parameters, and output its value to the web page.
+
+3-2. Printing Out the UTC Date and Time
+    Problem: You want to print out the current UTC (universal time) date and time, rather than the local time.
+    Solution: Use the UTC JavaScript methods in order to access the current data and time as universal time.
+
+3-3. Printing Out an ISO 8601 Formatted Date
+    Problem: You need a date string with the date formatted according to the ISO 8601 standard.
+    Solution: Construct the Date, access the individual elements, and create the ISO 8601 formatted string.
+
+3-4. Converting an ISO 8601 Formatted Date to a Format Acceptable to the Date Object
+    Problem: You need to convert an ISO 8601 formatted date string into values that can be used to create a new Date
+        object.
+    Solution: Parse the ISO 8601 sting into the individula date values, and use it to create a new JavaScript Date
+        object.
+
+3-5. Creating a Specific Date
+    Problem: You want to create a Date object given a month, day, and year.
+    Solution: Construct a Date object, passing in th month, day, and year as parameters.
+
+3-6. Scheduling a Future Date
+    Problem: You want to generate a future date.
+    Solution: Use a combination of the Date object's get and set methods in order to create a future date.
+
+3-7. Tracking Elapsed Time
+    Problem: You want to track the elapsed time between events.
+    Solution: Create a Date object when the first event occurs, a new Date object when the second event occurs, and
+        subtract the first from the second. The difference is in milliseconds; to convert to seconds, divide by 1,000.
+
+3-8. Creating a Timeout
+    Problem: You want to trigger a timeout based on an event.
+    Solution: Use the window.setTimetou method to create a one-time-only timer.
+
+3-9. Creating Recurring Timers
+    Problem: You need to run the same function several times at regular intervals.
+    Solution: Use the Window.setInterval method to create a recurring timer.
+
+3-10. Using Function Closures with Timers
+    Problem: You want to provide a function with a timer, but you want to add the function directly into the timer
+        method call.
+    Solution: Use an anonymous function as first parameter to the setInterval or setTimeout method call.

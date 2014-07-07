@@ -1,0 +1,13 @@
+4-1. Keeping an Incremental Counter
+    Problem: You want to maintain an incremental counter in code.
+    Solution: Define a number variable, either locally or globally, or as part of an object's properties, and increment
+        the variable's value with each iteration of code.
+
+4-2. Converting a Decimal to a Hexadecimal Value
+    Problem: You have a decimal value, and need to find its hexadecimal equivalent.
+    Solution: Use the Number object's toString method.
+
+4-3. Creating a Random Number Generator
+    Problem: You need to generate a random number, between 0 and 255.
+    Solution: Use a combination of JavaScript Math methods: random to generate a random value between 0 and 1, which is
+        then multiplied by 255, and floor to truncate the number.

@@ -28,3 +28,13 @@
         and end of the string.
     Solution: Prior to the new ECMAScript 5 specification, you could use a regular expression to trim whitespace from
         the beginning and end of a string.
+
+2-8. Replace HTML Tags with Named Entities
+    Problem: You want to paste example markup into a web page, and escape the markup - have the angle brackets print out
+        rather than have the contents parsed.
+    Solution: Use regular expressions to convert angle brackets (<>) into the named entities &lt; and &gt;.
+
+2-9. Searching for Special Characters
+    Problem: We've searched for numbers and letters, and anything not a number or other character, but one thing we need
+        to search is the special regular expression characters themselves.
+    Solution: Use the backslash to escape the pattern-matching character.

@@ -11,3 +11,40 @@
     Problem: You need to generate a random number, between 0 and 255.
     Solution: Use a combination of JavaScript Math methods: random to generate a random value between 0 and 1, which is
         then multiplied by 255, and floor to truncate the number.
+
+4-4. Randomly Generating Colors
+    Problem: You need to randomly generate a web color.
+    Solution: Use the Math object to randomly generate each RGB (Red-Green-Blue) value.
+
+4-5. Converting Strings in a Table to Numbers
+    Problem: You want to access values in an HTML table and convert to numbers for processing.
+    Solution: Access the numbers using the Document Object Model (DOM) API, and use the global function parseInt to
+        convert the strings to number values.
+
+4-6. Summing All Numbers in a Table Column
+    Problem: You want to traverse all of the values in a table column, convert the values to numbers, and them sum the
+        values.
+    Solution: Traverse the table column containing numeric values, convert to numbers, and sum the numbers.
+    Source Code: example4_1.html
+
+4-7. Converting Between Degrees and Radians
+    Problem: You have an angle in degrees. To use the value in the Math object's trigonometric functions, you need to
+        convert the degrees to radians.
+    Solution: To convert degrees to radians, multiply the value by (Math.PI / 180).
+
+4-8. Find the Radius and Center of a Circle to Fit Within a Page Element
+    Problem: Given the width and the height of a page element, you need to find the radius of the largest circle that
+        fits within that page element, and its center point.
+    Solution: Find the smaller of the width and height; divide this by 2 to find the radius:
+            var circleRadius = Math.min(elementWidth, elementHeight) / 2;
+        Given the page element's width and height, find the center by dividing both by 2;
+            var x = elementWidth / 2;
+            var y = elementHeight / 2;
+    Source Code: example4_2.html
+
+4-9. Calculating the Length of a Circular Arc
+    Problem: Given the radius of a circle, and the angle of an arc in degrees, find the length of the arc.
+    Solution: Use Math.PI to convert degrees to radians, and use the result in a formula to find the length of the arc:
+        // angle of the arc is 120 degrees, radius of circle is 2
+        var radians = degrees * (Math.PI / 180);
+        var arclength = radians * radius; // value is 4.1887...

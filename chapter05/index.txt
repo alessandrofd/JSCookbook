@@ -1,0 +1,45 @@
+5-1. Looping Through an Array
+    Problem: You want to easily access all elements of an array.
+    Solution: The most common approach to accessing an array is to use a for loop.
+
+5-2. Creating a Multidimensional Array
+    Problem: You want to create a multidimensional array (an array of arrays).
+    Solution: Create an array in which each element is also an array.
+
+5-3. Creating a String from an Array
+    Problem: You want to create a single string from an array.
+    Solution: Use the Array object's built-in join method to join the array elements into a string.
+
+5-4. Sorting an Array
+    Problem: You want to sort an array.
+    Solution: Use the Array object's sort method.
+
+5-5. Store and Access Values in Order
+    Problem: You want to store values in such a way that you can access the values in the order in which they were stored.
+    Solution: To store and access values in the order in which they're received, create a FIFO (first-in, first-out)
+        queue. Use the JavaScript Array object push method to add items to the queue, and shift to receive.
+
+5-6. Store and Access Values in Reverse Order
+    Problem: You want to store values in such a way that you can access the values in reverse order: access the most
+        recently stored value first, then a LIFO (last-in, first-out) stack.
+    Solution: To access stored values in reverse order (last item added is accessed first), create a LIFO (last-in,
+        first-out) stack. Use the JavaScript Array object's push method to add items to the stack, and the pop method to
+        retrieve.
+
+5-7. Create a New Array as a Subset of an Existing Array
+    Problem: You want to create a new array from a segment of an existing array. If the array elements are objects, you
+        want to keep both arrays in sync.
+    Solution: Use the Array object slice method to create a new array based on elements within a given range.
+
+5-8. Searching Through an Array
+    Problem: You want to search an Array for a specific value and get the array element index if found.
+    Solution: Use the new (ECMAScript 5) Array object methods indexOf and lastIndexOf.
+
+5-9. Flatten a Multidimensional Array
+    Problem: You want to flatten a multidimensional array into a single dimensional array.
+    Solution: Use the Array object concat method to merge the array dimensions into a single dimensional array.
+
+5-10. Search and Remove or Replace Array Elements
+    Problem: You want to find occurrences of a given value in an array, and either remove the element or replace it with
+        another value.
+    Solution: Use the Array object methods indexOf and slice to find and remove/replace array elements.

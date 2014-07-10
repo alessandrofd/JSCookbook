@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // set array length
+        var arrayLength = 3;
+
+        // create an array
+        var multiArray = new Array(arrayLength);
+        for(var i = 0; i < arrayLength; i++) {
+            multiArray[i] = new Array(arrayLength);
+        }
+
+        // add item to the first array index
+        multiArray[0][0] = "apple";
+        multiArray[0][1] = "banana";
+        multiArray[0][2] = "cherry";
+
+        // second
+        multiArray[1][0] = 2;
+        multiArray[1][1] = 56;
+        multiArray[1][2] = 83;
+
+        // third
+        multiArray[2][0] = ['test', 'again'];
+        multiArray[2][1] = ['Java', 'script'];
+        multiArray[2][2] = ['read', 'books'];
+
+        alert(multiArray);
+        alert(multiArray[2]);
+        alert(multiArray[2][2][0]);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+7-1. Detecting When the Page Has Finished Loading
+    Problem: You want to run a function after the page is finished loading.
+    Solution: Capture the load event via the onload event handler on the window:
+            window.onload = functionName;
+
+        Or:
+            window.onload = function() {
+                var someDiv = document.getElementById("somediv");
+                ...
+            }
+
+7-2. Capturing the Location of a Mouse Click Event Using the Event Object
+    Problem: You need to discover the location in the web page where a mouse click occurred.
+    Solution: Assign the onclick event handler to the document object, and when the event handler is processed, access
+        the click location from the Event object.
+
+7-3. Creating a Generic, Reusable Event Handler Function
+    Problem: You want to implement DOM Level 2 event handling, but the solution needs to be reusable and cross-browser
+        friendly.
+    Solution: See recipe7_3.html
+
+7-4. Canceling an Event Based on Changed Circumstance
+    Problem: You need to cancel an event, such as a form submission, before the event propagates to other elements.
+    Solution: Create a reusable function that will cancel an event:
+
+            // cancel event
+            function cancelEvent(event) {
+                if (event.preventDefault) {
+                    event.preventDefault();
+                } else {
+                    event.returnValue = false;
+                }
+            }
+            ...
+            function validateForm(evt) {
+                evt = evt || windows.event;
+                cancelEvent(evt);
+            }
+
+    Source Code: example7_3.html
+
+7-5. Preventing an Event from Propagating Through a Set of Nested Elements
+    Problem: You have one element nested in another. Both capture the click event. You want to prevent the click event
+        from the inner element from bubbling up or propagating to the outer event.
+    Solution: Stop the event from propagating with a generic routine that can be used with the element and any event:
+
+            // stop event propagation
+            function cancelPropagation(event) {
+                if (event.stopPropagation) {
+                    event.stopPropagation();
+                } else {
+                    event.cancelBubble = true;
+                }
+            }
+
+        In the event handler for the inner element click event, call the function, passing in the event object:
+
+            cancelPropagation(event);
+
+    Source Code: example7_2.html
+
+7-6. Capturing Keyboard Activity
+    Problem: You want to capture the keyboard events for a textarea, and look for specific character uses.
+    Solution: Capture the keyboard activity for a textarea element and check the ASCII value of the character to find
+        the character or characters of interest:
+
+            var inputTextArea = document.getElementById("source");
+            listenEvent(inputTextArea, "keypress", processKeyStroke);
+            function processKeyStroke(evt) {
+                evt  = evt ? evt : window.event;
+                var key = evt.charCode ? evt.charCode : evt.keyCode;
+                // check to see if character is ASCII 38, or ampersand (&)
+                if (key == "38")
+                    ...
+
+    Source Code: example7_3.html
+
+7-7. Using the New HTML5 Drag-and-Drop
+    Problem: You want to incorporate the use of drag-and-drop in your web page, and allow your users to move elements
+        from one place in the page to another.
+    Solution: Use the new HTML5 native drag-and-drop, which is an adaptation of the drag-and-drop technique supported in
+        Microsoft Internet Explorer.
+    Source Code: example7_4.html

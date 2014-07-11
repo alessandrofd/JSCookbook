@@ -3,3 +3,4 @@ chapter 03 - Dates, Time, and Timers
 chapter 04 - Working with Numbers and Math
 chapter 05 - Working with Arrays and Loops
 chapter 06 - Building Reusability with JavaScript Functions
+chapter 07 - Handling Events

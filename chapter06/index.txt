@@ -1,0 +1,60 @@
+6-1. Creating a Block of Reusable Code
+    Problem: You want to create a block of code that you can use several times.
+    Solution: Create a simple, named, parameter-less function using the function statement.
+
+6-2. Passing Single Data Values to and from a Function
+    Problem: You need to pass data values into a named function and get a result back.
+    Solution: Provide arguments for the incoming data, and return the result.
+
+6-3. Passing Complex Data Objects to a Function
+    Problem: You need to pass more complex data to a function.
+    Solution: You can use objects, such as arrays, as function arguments.
+    Source Code: example6_1.html
+
+6-4. Creating a Dynamic Runtime Function
+    Problem: You need to create a function, but you won't know its structure until runtime.
+    Solution: Use an anonymous function, create using the Function object constructor.
+    Source Code: example6_2.html
+
+6-5. Passing a Function as an Argument to Another Function
+    Problem: You want to pass a function as an argument to another function.
+    Solution: For the following function:
+            function otherFunction(x, y, z) {
+                x(y, z);
+            }
+        use a literal function:
+            var param = function(arg1, arg2) { alert(arg1 + " " + arg2); }
+            otherFunction(param, "Hello", "World");
+
+        or a function expression as a function argument:
+            otherFunction(function(arg1, arg2) { alert(arg1 + ' ' + arg2); }, "Hello", "World");
+
+6-6. Implementing a Recursive Algorithm
+    Problem: You want to implement a function that will recursively traverse an array and return a reversed array string.
+    Solution: Use a function literal recursively until the end goal is met.
+
+6-7. Create a Function that Remembers its State
+    Problem: You want to create a function that can remember static data, but without having to use global variables and
+        without resending the same data with each function call.
+    Solution: Create an outer function that takes one or more parameters, and then an inner function that also takes one
+        or more parameters but uses both its and its parent function's parameters in order to perform its functionality.
+        Return the inner function from the outer function, and assign it to a variable. From that point use the variable
+        as a function.
+
+6-8. Improving Application Performance with a Generalized Currying Function
+    Problem: You have several functions you want to simplify by attaching recurring argument values to the functions, so
+        the arguments don't have to be repeated.
+    Solution: Use the concept of currying, a specialized form of function closure, to create a function generator that
+        takes the function name and the persisted arguments, and returns a new partial function that only needs the
+        remaining arguments.
+
+6-9. Improve Application Performance with Memoization (Caching Calculations)
+    Problem: You want to optimize your JavaScript applications and libraries by reducing the need to repeat complex and
+        CPU-intensive computations.
+    Solution: Use function memoization in order to cache the results of a complex calculation.
+    Source Code: example6_3.html
+
+6-10. Using an Anonymous Function to Wrap Global Variables
+    Problem: You need to create a variable that maintains state between function calls, but you want to avoid global
+        variables.
+    Solution: Use an anonymous function to wrap variables and functions both

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Anonymous Function</title>
+    <script>
+        window.onload = function() {
+
+            var func = prompt("Enter a function body:", "");
+            var x = prompt("Enter value for x:", "");
+            var y = prompt("Enter value for y:", "");
+
+            var newFunc = new Function("x", "y", func);
+            var result = newFunc(x, y);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function() {
+            var items = new Array("apple", "orange", "cherry", "lime");
+            var sep = "*";
+            concatenateString(items, sep);
+
+            alert(items);
+            alert(sep);
+        };
+
+        function concatenateString(strings, separator) {
+            var result = "";
+            for (var i = 0; i < strings.length; i++) {
+                result += strings[i] + separator;
+            }
+
+            // assign result to separator
+            separator = result;
+
+            // and array
+            strings[strings.length] = result;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -43,3 +43,27 @@
     Problem: You want to find occurrences of a given value in an array, and either remove the element or replace it with
         another value.
     Solution: Use the Array object methods indexOf and slice to find and remove/replace array elements.
+    Source Code: example5_2.html
+
+5-11. Applying a Function Against Each Array Element
+    Problem: You want to use a function to check as Array value, and replace it if it matches a given value.
+    Solution: Use the new ECMAScript5 Array object forEach to attach a callback function to each array element.
+
+5-12. Applying a Function to Every Element in an Array and Returning a New Array
+    Problem: You want to convert an array of decimal numbers into a new array with their hexadecimal equivalents.
+    Solution: Use the Array object map method to create a new array consisting of elements from the old array that
+        have been modified via a callback function passed to the map method.
+
+5-13. Creating a Filtered Array
+    Problem: You want to filter element values in an array and assign the results to a new array.
+    Solution: Use the Array object filter method.
+
+5-14. Validating Array Contents
+    Problem: You want to make sure that an array meets certain criteria.
+    Solution: Use the Array object's every method to check that every element passes a certain criteria. Or use the
+        Array object's some method to ensure that at least some of the elements pass the criteria.
+
+5-15. Using an Associative Array to Store Form Element Names and Values
+    Problem: You want to store form element names and values, for later validation purposes.
+    Solution: Use an associative array  to store the elements, using the element identifiers as array indexes.
+    Source Code: example5_3.html

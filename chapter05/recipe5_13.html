@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function removeChars(element, index, array) {
+            return (element != "**");
+        }
+
+        var charSet = new Array("**", "bb", "cd", "**", "cc", "**", "dd", "**");
+
+        var newArray = charSet.filter(removeChars);
+        alert(newArray);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

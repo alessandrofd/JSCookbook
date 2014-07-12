@@ -1,0 +1,38 @@
+9-1. Accessing Form Text Input Values
+    Problem: You need to access the contents of a text input form element using JavaScript.
+    Solution: Use the DOM to access the form element:
+
+            var formValue = document.forms["formName"].elements["elementName"].value;
+
+9-2. Dynamically Disabling and Enabling Form Elements
+    Problem: Based on some action or event, you want to disable, or enable, one or more form elements.
+    Solution: Use the disabled property to enable or disable form element(s), accessing the element via the forms/elements
+        collections:
+
+            document.forms["formName"].elements["elementName"].disabled = true;
+
+        or via direct access to an element via an identifier:
+
+            document.getElementById("elementName").disabled = true;
+
+9-3. Getting Information from a Form Element Based on an Event
+    Problem: You need to access information from a form element after an event.
+    Solution: Depending on the form element, you can capture any number of events, and based on the event, process the
+        form element data.
+
+9-4. Performing an Action when a Radio Button is Clicked
+    Problem: You want to perform an action based on which radio button is clicked.
+    Solution: Attach an onclick event handler to each of the radio buttons; in the event handler perform whatever action
+        you need:
+
+            window.onload = function() {
+                var radios = document.forms[0].elements["group1"];
+                for (var i = 0; i < radios.length; i++)
+                    radios[i].onclick = radioClicked;
+            }
+            function radioClicked() {
+                if (this.value = "one")
+                    document.forms[0].elements["line_text"].disabled = true;
+            }
+
+    Source Code: example9_1.html

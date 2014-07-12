@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function listenEvent(eventTarget, eventType, eventHandler) {
+            if (eventTarget.addEventListener) {
+                eventTarget.addEventListener(eventType, eventHandler, false);
+            } else if (eventTarget.attachEvent) {
+                eventTarget.attachEvent("on" + eventType, eventHandler);
+            } else {
+                eventTarget["on" + eventType] = eventHandler;
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("input1").onchange = textChanged;
+            document.getElementById("input2").onblur = checkValue;
+            document.getElementById("check1").onclick = getCheck;
+            listenEvent(document.getElementById("button1"), "click", handleClick);
+        };
+
+        function textChanged() {
+            alert(this.value);
+        }
+
+        function checkValue() {
+            var val = this.value;
+            var t = this;
+            val = val.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+            if (val.length == 0) alert("need value!");
+        }
+
+        function getCheck() {
+            var checked = this.checked;
+            if (checked) alert("checked");
+        }
+
+        function handleClick(evt) {
+            evt = evt || window.event;
+            var elem;
+            if (evt.srcElement) {
+                elem = evt.srcElement;
+            } else {
+                elem = this;
+            }
+            alert(elem.id);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="input1">Input 1:</label><input type="text" name="input1" id="input1" /><br /><br />
+        <label for="input2">Input 2:</label><input type="text" name="input2" id="input2" /><br /><br />
+        <label for="check1">Check 1:</label><input type="checkbox" name="check1" id="check1" tabindex="100" /><br /><br />
+        <input type="button" id="button1" value="button" />
+    </form>
+
+</body>
+</html>

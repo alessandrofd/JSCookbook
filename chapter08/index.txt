@@ -1,0 +1,48 @@
+8-1. Ask the Web Page Reader to Confirm an Action
+    Problem: You want to confirm an action with the web page reader.
+    Solution: Use the confirm pop-up box.
+
+8-2. Creating a New, Stripped-Down Browser Window
+    Problem: You want to open a web page in a new, stripped down, fixed-size browser window.
+    Solution: Open a new browser window using the window.open method, passing in optional parameters: a URL to load,
+        and a window name.
+
+8-3. Finding Out About the Browser Accessing the Page
+    Problem: You want to determine information about the browser accessing the web page.
+    Solution: Use the Navigator object to discover information about the browser and the browser environment.
+
+8-4. Warning the Web Page Reader About Leaving a Page
+    Problem: Your web page reader has clicked a link that takes him out of your website. Because of the sensitive nature
+        of your site, such as government, bank, or medical organization site, you want to make sure that the person is
+        aware that he's leaving your site and going to an external site.
+    Solution: Add an event listener for the window unload event and then provide a prompt to the web page reader that
+        he's leaving the site.
+
+8-5. Changing Stylesheets Depending on Color Support
+    Problem: You want to change your site's stylesheet if the device viewing the page only supports 4-bit grayscale, or
+        8-bit color.
+    Solution: Use the Screen object to check the colorDepth property, and change either a CSS rule or an entire
+        stylesheet based on the findings.
+
+8-6. Modifying Image Dimensions Depending on Page Size
+    Problem: You want to set up the screen width and serve up an appropriately sized photo.
+    Solution: Use the Scree object's availWidth or width values to determine available space.
+
+8-7. Creating Breadcrumbs in a CMS Template Page
+    Problem: You want to display footprint information based on the page URL for use in a Content Management System
+        (CMS) template.
+    Solution: Use the window.location object to get information about the current page's URL, and then break it down to
+        provide the footprint information.
+    Source Code: example8_1.html
+
+8-8. Bookmarking a Dynamic Page
+    Problem: You have a dynamic application in which updates occur in the page rather than when the page refreshes. You
+        want to provide a link to your web page reader that not only takes the user back to the page, but returns it to
+        a given state.
+    Solution: Use the location object's hash property to return to the state directly.
+    Source Code: example8_2.html
+
+8-9. Preserving State for Back Button, Page Refresh
+    Problem: You want to store a dynamic page's effects in such a way that if a web page reader accidentally hits the
+        page refresh button or back button, the effects won't be lost.
+    Solution: You set the location object's hash to preserve state automatically, so a dynamic effect is preserved.

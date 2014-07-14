@@ -36,3 +36,68 @@
             }
 
     Source Code: example9_1.html
+
+9-5. Checking for a Valid Phone Number
+    Problem: You want to validate form information that requires certain format, such as a valid phone number.
+    Solution: Access the form field value than use a regular expression to validate the format. To validate a US-based
+        phone number (area + prefix + digits):
+
+            // filter out anything but numbers to standardize input
+            var phone = documento.forms[0].elements["intext"].value;
+            var re = /\D+/g;
+            var cleanphone = phone.replace(re, "");
+
+            // check length
+            if (cleanphone.length < 10) alert ("bad phone");
+
+9-6. Canceling a Form Submission
+    Problem: You want to cancel a form submission if you find the data entered into the form fields invalid.
+    Solution: If the form fields don't validate, cancel the form submission using the technique appropriate to the event
+        handling technique you're using. Here, we're borrowing form Chapter 7 (where we covered events):
+
+            // listen to events
+            function listenEvent(eventTarget, eventType, eventHandler) {
+                if (eventTarget.addEventListener) {
+                    eventTarget.addEventListener(eventType, eventHandler, false);
+                } else if (eventTarget.attachEvent) {
+                    eventTarget.attachEvent("on" + eventType, eventHandler);
+                } else {
+                    eventTarget["on" + eventType] = eventHandler;
+                }
+            }
+
+            // cancel event
+            function cancelEvent(event) {
+                if (event.preventDefault) {
+                    event.preventDefault();
+                } else {
+                    event.returnValue = false;
+                }
+            }
+
+            window.onload = function() {
+                var form = document.forms["picker"];
+                listenEvent(form, "submit", validateFields);
+            }
+
+            function validateFields(evt) {
+                evt = evt ? window.event;
+                ...
+                if (invalid) {
+                    cancelEvent(evt);
+                }
+            }
+
+9-7. Preventing Duplicate Form Submissions
+    Problem: Potential harm could occur if a user submits the same form multiple times. You want to prevent multiple
+        form submissions.
+    Solution: One approach is to provide a message that the form has been submitted, and then providing some means to
+        prevent the web page reader from submitting the form again In its simples variation, the following would work:
+
+            function validateSubmission(evt) {
+                ...
+                alert("Thank you, we're processing your order right now.");
+                document.getElementById("submitButton").disabled = true;
+            }
+
+    Source Code: example9_2.html

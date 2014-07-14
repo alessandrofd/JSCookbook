@@ -101,3 +101,83 @@
             }
 
     Source Code: example9_2.html
+
+9-8. Hiding and Displaying Form Elements
+    Problem: You want to hide form elements until some event.
+    Solution: Surround the form elements that will be hidden with a div element:
+
+            <form id="picker" method="post" action="">
+                Item 1: <input type="radio" name="group1" value="one" />
+                Item 2: <input type="radio" name="group1" value="two" />
+                Item 3: <input type="radio" name="group1" value="three" /><br /><br />
+                <div id="hidden_elements">
+                    Input 1: <input type="text" id="intext" />
+                    Input 2: <input type="text" id="intext2" />
+                    Input 3: <input type="text" id="intext3" /><br /><br />
+                </div>
+                <input type="submit" id="submitbutton" value="Send form" />
+            </form>
+
+        Change the div's display to none when the page loads:
+
+            window.onload = function() {
+                document.getElementById("hidden_elements").style.display = "none";
+
+                // attach the click event handler to the radio buttons
+                var radios = document.forms[0].elements["group1"];
+                for (var i = 0; i < radios.length; i++)
+                    radios[i].onclick = radioClicked;
+            }
+
+        When the event to display the form element occurs, change the div element's display so that the form elements
+        are displayed:
+
+            function radioClicked() {
+                if (this.value == "two") {
+                    document.getElementById("hidden_elements").style.display = "block";
+                } else {
+                    document.getElementById("hidden_elements").style.display = "none";
+                }
+            }
+
+9-9. Modifying a Selection List Based on Other Form Decisions
+    Problem: You want to modify the contents of a second selection list based on the choice made in a first selection
+        list.
+    Solution: You have two options when it comes to modifying the contents of one selection list, based on the choice
+        in another selection list.
+
+        The first is to query a database and build the selection list based on the choice. This is demonstrated in the
+        Recipe 18.9, which cover Ajax.
+
+        The second approach is to maintain a static copy of the selection list options:
+
+        var citystore = new Array();
+        citystore[0] = ['CA', 'San Francisco'];
+        citystore[1] = ['CA', 'Los Angeles'];
+        citystore[2] = ['CA', 'San Diego'];
+        citystore[3] = ['MO', 'St. Louis'];
+        citystore[4] = ['MO', 'Kansas City'];
+        citystore[5] = ['WA', 'Seattle'];
+        citystore[6] = ['WA', 'Spokane'];
+        citystore[7] = ['WA', 'Redmond'];
+
+        // And use this copy to rebuild the selection list
+        function filterCities() {
+            var state = this.value;
+            var city = document.getElementById("cities");
+            city.option.length = 0;
+
+            for (var i = 0; i < citystore.length; i++) {
+                var st = citystore[i][0];
+                    if (st == state) {
+                    var opt = new Option(citystore[i][1]);
+                    try {
+                        city.add(opt, null);
+                    } catch(e) {
+                        city.add(opt);
+                    }
+                }
+            }
+        }
+
+    Source Code: example9_3.html

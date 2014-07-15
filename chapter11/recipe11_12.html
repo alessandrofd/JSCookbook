@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 11.12</title>
+    <style>
+        elem {
+            padding: 10px;
+            border: 1px solid #000000;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            // setting and accessing style properties
+            var elem = document.getElementById("elem");
+            alert(elem.id);
+            alert(elem.className);
+
+            var index = elem.getAttribute("data-index");
+            alert(index);
+
+            var role = elem.getAttribute("role");
+            alert(role);
+
+            var field = document.getElementById("field");
+            alert(field.checked);
+            alert(field.value);
+            alert(field.type);
+        }
+    </script>
+</head>
+<body>
+    <div id="elem" class="test" role="article" data-index="1">
+        testing
+    </div>
+    <form>
+        <input id="field" type="checkbox" checked="checked" value="test" />
+    </form>
+</body>
+</html>

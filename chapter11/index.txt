@@ -125,3 +125,112 @@
         The universal selector can also be used to find all elements with an attribute that's assigned the same value:
 
             elems = document.querySelectorAll('*[class="red"]');
+
+11-10. Finding All Checked Options
+    Problem: You want to find all checkbox input elements that are selected (checked).
+    Solution: Use a :checked pseudoclass selector to directly query all checked checkbox input elements:
+
+            var checked = document.querySelectorAll("#checks input[type='checkbox']:checked");
+            for (var i = 0; i < checked.length; i++) {
+                str += checked[i].value + " "
+            }
+
+        If the :checked selector fails, use the following, which accesses all of the input elements, checks their type,
+        and then checks to see if they're selected:
+
+            var inputs = document.querySelectorAll("#checks input");
+            for (var j = 0; j < inputs.length; j++) {
+                if (inputs.item(j).type == "checkbox" && inputs.item(j).checked) {
+                    str += inputs.item(j).value + " ";
+                }
+            }
+
+11-11. Summing All the Values in a Table Row
+    Problem: You want to sum the numbers in table cell per row (or per column).
+    Solution: Use the Selectors API to access the specific table row cells directly, or retrieve a collection of all
+        table rows, access the target row from the returned collection, and then access the table row's cells. Once
+        retrieved by either method, traverse the cells, accessing the cell data and converting the data to number:
+
+            try {
+                var cells = document.querySelectorAll("tr:nth-child(3) td");
+            } catch (e) {
+                var tableElement = document.getElementById("thetable");
+                var trs = tableElement.getElementsByTagName("tr");
+                var cells = trs[2].getElementsByTagName("td");
+            }
+
+            // process cell data
+            var sum = 0;
+            for (var i = 0; i < cells.length; i++) {
+                var val = parseFloat(cells[i].firstChild.data);
+                if (!isNaN(val)) {
+                    sum += val;
+                }
+            }
+
+            // output the sum
+            alert("sum " + sum);
+
+11-12. Get Element Attributes
+    Problem: You want to access the information contained in an element attribute.
+    Solution: If the attribute is defined as a standard attribute in the DOM by the user agent(browser), you can access
+        the attribute directly on the element:
+
+            <input id="field" type="check" checked="checked" value="test" />
+            ...
+            var field = document.getElementById("field");
+            alert(field.checked); // true
+            alert(field.value); // test
+            alert(field.type); // text
+
+        Some attributes are renamed when you access them in JavaScript, such as the class attribute, which you access as
+        className:
+
+            <div id="elem" class="test" role="article" data-index="1">
+                testing
+            </div>
+            ...
+            var element = document.getElementById("elem");
+            alert(elem.className); // test
+
+        For nonstandard attributes, or ones that have been newly defined but are not considered standard by the specific
+        browser, you need to use the getAttribute method:
+
+            var index = elem.getAttribute("data-index");
+            alert.(index); // 1
+
+            var role = elem.getAttribute("role");
+            alert(role); // article
+
+11-13. Get Style Information for an Element
+    Problem: You want to get one or more CSS style settings for an element.
+    Solution: If you want to access style information that's set inline or via JavaScript, and access it directly on the
+        element's style property, use:
+
+            var width = elem.style.width;
+
+        If you want to access the element's existing style information, regardless of how it's set, you need to use a
+        cross-browser approach:
+
+            function getStyle(elem, cssprop, cssprop2) {
+                // IE
+                if (elem.currentStyle) {
+                    return elem.currentStyle[cssprop];
+
+                // other browsers
+                } else if (document.defaultView && document.defaultView.getComputedStyle) {
+                    return document.defaultView.getComputedStyle(elem, null).getPropertyValue(cssprop2);
+
+                // fallback
+                } else {
+                    return null;
+                }
+            }
+
+            window.onload = function() {
+                // setting and accessing style properties
+                var elem = document.getElementById("elem");
+
+                var color = getStyle(elem, "backgroundColor", "background-color");
+                alert(color); // rgb(0, 255, 0)
+            }

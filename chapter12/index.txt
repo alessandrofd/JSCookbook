@@ -1,0 +1,36 @@
+12-1. Using innerHTML: A Quick and Easy Approach to Adding Content
+    Problem: You want to add a couple of paragraphs with text to a div element, and you want to do so quickly and easily.
+    Solution: Use the innerHTML property to overwrite an element's existing contents, with new material:
+
+            var div = document.getElementById("target");
+            div.innerHTML = "<p>This is a paragraph.</p><p>This is a second.</p>";
+
+12-2. Inserting Elements Before Existing Page Elements
+    Problem: You need to add a new div element to the web page before an existing div element.
+    Solution: Use the DOM method createElement to create a new div element. Once created, attach it to the web page
+        before an existing element, using another DOM method, insertBefore:
+
+            // get the existing element
+            var refElement = document.getElementById("sister");
+
+            // get the element's parent node
+            var parent = refElement.parentNode;
+
+            // create new div element
+            var newDiv = document.createElement("div");
+
+            // attach to page before sister element
+            parent.insertBefore(newDiv, refElement);
+
+    Source Code: example12_1.html
+
+12-3. Appending a New Element to the End of a Page
+    Problem: You want to add a new element to a web, but you want to append it to the end of the page.
+    Solution: Access the highest level web page element, the body element, and use the appendChild method to append the
+        new element to the page:
+
+        var bdy = document.getElementByTagName("body")[0]; // body element
+        var newDiv = document.createElement("div");
+
+        // append to body
+        bdy.appendChild(newDiv);

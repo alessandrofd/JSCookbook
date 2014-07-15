@@ -8,3 +8,4 @@ chapter 08 - Browser Pieces
 chapter 09 - Form Elements and Validation
 chapter 10 - Debugging and Error Handling
 chapter 11 - Accessing Page Elements
+chapter 12 - Creating and Removing Elements and Attributes

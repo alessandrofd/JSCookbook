@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 11.3</title>
+    <script src="html5.js"></script>
+    <script>
+        window.onload = function() {
+            var imageString = "";
+
+            // find all articles
+            var articles = document.getElementsByTagName("article");
+
+            // find all images in articles
+            for (var i = 0; i < articles.length; i++) {
+                var images = articles[i].getElementsByTagName("img");
+
+                // print out src
+                for (var j = 0; j < images.length; j++) {
+                    var image = images[j];
+                    imageString += image.src + "<br />";
+                }
+            }
+            document.getElementById("result").innerHTML = imageString;
+        }
+    </script>
+</head>
+<body>
+    <div id="result"></div>
+    <article>
+        <p><img src="orchids12.preview.jpg" /></p>
+        <p><img src="orchids6.preview.jpg" /></p>
+        <p><img src="orchids9.preview.jpg" /></p>
+    </article>
+    <article>
+        <p><img src="orchids4.preview.jpg" /></p>
+    </article>
+</body>
+</html>

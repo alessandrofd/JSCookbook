@@ -1,0 +1,127 @@
+11-1. Access a Given Element and Find its Parent and Child Elements
+    Problem: You want to access a specific document element, and find its parent and child elements.
+    Solution: Give the element a unique identifier, and use the document.getElementById method:
+
+            <div id="demodiv">
+            ...
+            var demodiv = document.getElementById("demodiv");
+
+        Find its parent via the parentNode property:
+
+            var parent = demodiv.parentNode;
+
+        Find its children via the childNodes property:
+
+            var children = demodiv.childNodes;
+
+11-2. Accessing All Images in the Web Page
+    Problem: You want to access all img elements in a given document.
+    Solution: Use the document.getElementsByTagName method, passing in img as the parameter:
+
+            var imgElements = document.getElementsByTagName("img");
+
+11-3. Discover All Images Within an Article
+    Problem: You want to access all images within article elements only.
+    Solution: Find all article elements in the web page. Once they are found, find the img elements for each one:
+
+            var imgString = "";
+
+            // find all articles
+            var articles = document.getElementsByTagName("article");
+
+            // find all images in articles
+            for (var i = 0; i < articles.length; i++) {
+                var imgs = articles[i].getElementsByTagName('img');
+
+                // print ou src
+                for (var j = 0; j < imgs.length; j++) {
+                    var img = imgs[j];
+                    imgString += img.src + "<br />";
+                }
+            }
+            document.getElementByID("result").innerHTML = imgString;
+
+11-4. Discover All Images in Articles Using the Selectors API
+    Problem: You want to get a list of all img elements that are descendants of article elements, but not have to
+        transverse HTML collection objects, which can be a slow operation.
+    Solution: Use the newer Selectors API and access the img elements contained within article elements using CSS-style
+        selector strings:
+
+            var images = document.querySelectorAll("article img");
+
+11-5. Finding the Parent Element for a Group of Elements
+    Problem: You want to access the parent element for a group of paragraphs.
+    Solution: Use the querySelector method to access the first paragraph in the set, and then access the parentNode
+        property for this element.
+
+            var parent = document.querySelector("body p").parentNode;
+
+11-6. Highlighting the First Paragraph in Every Element
+    Problem: Based on some user event, you want to dynamically change the background color to yellow for the first
+        paragraph in every div element.
+    Solution: Use the document.querySelectAll with the appropriate CSS selector in order to reference all first paragraphs
+        in div elements, and them modify the paragraph's CSS background color:
+
+            var paras = document.querySelectAll('div p:first-of-type');
+            for (var i = 0; i < paras.length; i++) {
+                paras[i].setAttribute("style", "background-color: #ffff00");
+            }
+
+        If the specific pseudoselector syntax is not supported, use an alternative, such as the following:
+
+            var divs = document.querySelectorAll('div');
+            for (var j = 0; j < divs.length; j++) {
+                var ps = divs.item(j).getElementsByTagName('p');
+                if (ps.length > 0) {
+                    ps[0].setAttribute("style", "background-color: #ffff00");
+                }
+            }
+
+11-7. Apply a Striping Theme to an Unordered List
+    Problem: You want to modify the appearance of unordered list items so that the list appears striped.
+    Solution: Use the Selectors API to query for every other item in the list, and then change the background color:
+
+            var lis = document.querySelectorAll('li:nth-child(2n+1)');
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].setAttribute("style", "background-color: #ffeeee");
+            }
+
+        or:
+
+            var lis = document.querySelectorAll('li:nth-child(odd)');
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].setAttribute("style", "background-color: #ffeeee");
+            }
+
+        or access the list parent element and then traverse its child nodes, changing the background color of every other
+        element, using the arithmetic modulo operator:
+
+            var parentElement = document.getElementById("theList");
+            var lis = parentElement.getElementsByTagName("li");
+            for (var i = 0; i < lis.length; i++) {
+                if (i % 2 == 0) {
+                    lis[i].setAttribute("style", "background-color: #ffeeee");
+                }
+            }
+
+11-8. Creating an Array of All Elements of a Given Class
+    Problem: You want to retrieve a collection of elements that have a specific class name within the document.
+    Solution: Use the getElementsByClassName method to retrieve a collection of all elements in the document that share
+        the same class name:
+
+            var elems = document.getElementsByClassName("classname");
+
+        or use the Selectors API to get the class-named items:
+
+            var elems = document.querySelectorAll(".classname");
+
+11-9. Finding All Elements That Share an Attribute
+    Problem: You want to find all elements in a web document that share the same attribute.
+    Solution: Use the universal selector (*) in combination with the attribute selector to find all elements that have
+        an attribute, regardless of its value:
+
+            var elems = document.querySelectorAll("*[class]");
+
+        The universal selector can also be used to find all elements with an attribute that's assigned the same value:
+
+            elems = document.querySelectorAll('*[class="red"]');

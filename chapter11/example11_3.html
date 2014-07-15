@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>paras</title>
+    <style>
+        div {
+            padding: 10px;
+            border: 1px solid #000000;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            document.onclick = function() {
+                try {
+                    var paras = document.querySelectorAll('div p:first-of-type');
+                    for (var i = 0; i < paras.length; i++) {
+                        paras[i].setAttribute("style", "background-color: #ffff00");
+                    }
+                } catch (e) {
+                    var divs = document.querySelectorAll('div');
+                    for (var j = 0; j < divs.length; j++) {
+                        var ps = divs.item(j).getElementsByTagName('p');
+                        if (ps.length > 0) {
+                            ps[0].setAttribute("style", "background-color: #ffff00");
+                        }
+                    }
+                }
+            };
+        };
+    </script>
+</head>
+<body>
+    <div>
+        <p>Paragraph One</p>
+        <p>Paragraph Two</p>
+        <p>Paragraph Three</p>
+    </div>
+    <div>
+        <p>Paragraph One</p>
+        <p>Paragraph Two</p>
+    </div>
+    <div>
+        <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+        </ul>
+        <p>Paragraph One</p>
+        <p>Paragraph Two</p>
+    </div>
+
+</body>
+</html>

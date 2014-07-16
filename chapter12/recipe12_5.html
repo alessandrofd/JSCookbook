@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 12.5 - Inserting a New Paragraph</title>
+    <script>
+        window.onload = function() {
+            // get the target div
+            var div = document.getElementById("target");
+
+            // retrieve a collection of all the div's paragraphs
+            var paras = div.getElementsByTagName("p");
+
+            // if a third paragraph exists, insert the new element before
+            // otherwise, append the paragraph to the end of the div
+            var newPara = document.createElement("p");
+            if (paras[2]) {
+                div.insertBefore(newPara, paras[2]);
+            } else {
+                div.appendChild(newPara);
+            }
+
+            // add content to the paragraph
+            newPara.innerHTML = "This is the new paragraph";
+        };
+    </script>
+</head>
+<body>
+    <div id="target">
+        <p>This is the first paragraph.</p>
+        <p>This is the second paragraph.</p>
+        <p>This is the third paragraph.</p>
+        <p>This is the fourth paragraph.</p>
+    </div>
+</body>
+</html>

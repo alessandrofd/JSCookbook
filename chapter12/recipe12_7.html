@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 12.7 - Adding Attributes to an Existing Element</title>
+    <script>
+        window.onload = function() {
+            // first approach
+            var targetNode = document.getElementById("target");
+            var newAttr = document.createAttribute("newattr");
+            newAttr.nodeValue = "red";
+            targetNode.setAttributeNode(newAttr);
+            alert(targetNode.getAttribute("newAttr"));
+
+            // second approach
+            targetNode.setAttribute("newattr2", "blue");
+            alert(targetNode.getAttribute("newattr2"));
+        }
+    </script>
+</head>
+<body>
+    <div id="target">This is a paragraph in a div element</div>
+</body>
+</html>

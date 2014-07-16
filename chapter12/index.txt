@@ -34,3 +34,130 @@
 
         // append to body
         bdy.appendChild(newDiv);
+
+12-4. Triggering Older Versions of IE to Style New Elements
+
+12-5. Inserting a New Paragraph
+    Problem: You want to insert a new paragraph just before the third paragraph within a div element.
+    Solution: Use some method to access the third paragraph, such as getElementsByTagName, to get all of the paragraphs
+        for a div element. The use the createElement and insertBefore DOM methods to add the new paragraph just before
+        the existing third paragraph:
+
+            // get the target div
+            var div = document.getElementById("target");
+
+            // retrieve a collection of paragraphs
+            var paras = div.getElementsByTagName("p");
+
+            // if a third para exists, insert the new element before
+            // otherwise, append the paragraph to the end of the div
+            var newPara = document.createElement("p");
+            if (paras[3]) {
+                div.insertBefore(newPara, paras[3]);
+            } else {
+                div.appendChild(newPara);
+            }
+
+12.6 - Adding Text to a New Paragraph
+    Problem: You want to create a new paragraph with text and insert it just before the second paragraph within a div
+        element.
+    Source Code: example12_2.html
+
+12.7 - Adding Attributes to an Existing Element
+    Problem: You want to add one or more attributes to an existing element.
+    Solution: You can use the createAttribute method to create an Attr node, set its value using the nodeValue property,
+        and then use setAttribute to add to an element:
+
+            var someElement = document.getElementById("elem");
+            var newAttr = document.createAttribute("newAttribute");
+            newAttr.nodeValue = "testvalue";
+            someElement.setAttributeNode(newAttr);
+
+        or you can set the value directly with setAttribute, passing in the attribute name and value:
+
+            someElement.setAttribute("newAttribute", "testvalue");
+
+12.8 - Testing for a Boolean Attribute
+    Problem: You want to test to see if the element has a boolean attribute.
+    Solution: Use the hasAttribute method to check for the existence of the Boolean or any other attribute:
+
+        var targetNode = document.getElementById("target");
+        if (targetNode.hasAttribute("class")) {
+            alert(targetNode.getAttribute("class"));
+        }
+
+12.9 - Removing an Attribute
+    Problem: You want to remove an attribute from an element.
+    Solution: Use the removeAttribute method:
+
+        if (targetNode.hasAttribute("class")) {
+            targetNode.removeAttribute("class");
+            alert(targetNode.getAttribute("class")); // null
+        }
+
+12.10 - Moving a Paragraph
+    Problem: You want to move the last paragraph to before the first.
+    Solution: Get a reference to the paragraph you want to move, the first paragraph, and the parent element for the
+        first paragraph, and use insertBefore to insert the last paragraph before the first:
+
+            var para = document.getElementsByTagName("p");
+            var parent = para[0].parentNode;
+            parent.insertBefore(para[para.length - 1], para[0]);
+
+        An element exists only once in the DOM regardless of its location. When you insert or append the element in a
+        new location, it's automatically removed from its previous position in the page layout.
+
+12.11 - Replacing Links for Footnotes Bullets
+    Problem: You want to scan a web page for links, remove the links from the page, and replace them with text-base
+        footnote bullets at the end of the document.
+    Source Code: example12_3.html
+
+12.12 - Adding Rows to an Existing Table
+    Problem: You want to add one or more rows to an HTML table.
+    Solution: Adding table rows isn't complicated, but depending on the size of the table, it can be tedious. For each
+        table cell, you have to create a text node for the value, append the value to a new td element, append the
+        element to a new tr element, and then append the whole thing to the table:
+
+            var table = document.getElementById("targettable");
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            var txt = document.createTextNode("some value");
+
+            td.appendChild(txt);
+            tr.appendChild(td);
+            table.appendChild(tr);
+
+    Source Code: example12_4.html
+
+12.13 - Removing a Paragraph from a div Element
+    Problem: You want to remove a paragraph from the web page.
+    Solution: You need to find the paragraph's parent and use the removeChild method to remove the paragraph:
+
+            var para = document.getElementById("thepara");
+            para.parentNode.removeChild(para);
+
+    Source Code: example12_5.html
+
+12.14 - Deleting Rows from an HTML Table
+    Problem: You want to remove one or more rows from an HTML table.
+    Solution: You can use the DOM removeChild method on an HTML table row, and all of the child elements, such as the
+        table cell, will also be removed:
+
+            var parent = row.parent;
+            var oldrow = parent.removeChild(row);
+
+    Source Code: example12_6.html
+
+12.15 - Changing the Element's CSS Style Properties
+    Problem: You want to modify one or more CSS properties for an element.
+    Solution: If you're only modifying a single property, you can change the CSS setting directly using the element's
+        style property:
+
+            var elem = document.getElementById("elem");
+            elem.style.width = "500px";
+
+        If you're modifying on or more values, you can use the element's setAttribute method:
+
+            elem.setAttribute("style", "width: 500px; background-color: yellow;");
+
+    Source Code: example12_7.html

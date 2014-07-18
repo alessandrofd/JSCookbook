@@ -116,3 +116,22 @@
         actions.
     Solution: Create a tabbed page effect and hide or display tab pages based on clicking the tab label.
     Source Code: example13_4.html
+
+13.8 - Creating Hover-Based Pop-up Info Windows
+    Problem: You like the Netflix web site's pop-up window that displays when the mouse cursor is over a movie thumbnail,
+        and you want to incorporate this functionality into you own application.
+    Solution:
+        The Netflix-style pop-up window is based on four different functionalities.
+
+        First, you need to capture the mouseover and mouseout events for each image thumbnail, in order to display or
+        remove the pop-up window, respectively. Using a function that manages cross-browser event handling for every
+        object that has an info bubble, assign a function to both the onmouseover and onmouseout event handlers.
+
+        Second, you need to access something about the item you're hovering over in order to know what to use to
+        populate the pop-up bubble. The information can be in the page, or you can use Ajax to get the information.
+
+        Third, you need to either show the pop-up window, if it already exists and is not displayed, or create the
+        window.
+
+        Lastly, when the mouseover event fires, you need to either hide the pop-up window or remove it - whichever makes
+        sense in your setup.

@@ -135,3 +135,22 @@
 
         Lastly, when the mouseover event fires, you need to either hide the pop-up window or remove it - whichever makes
         sense in your setup.
+
+
+    Problem: You have a website that has a main column and one or more side columns. You want to provide a way for your
+        web page readers to control the width of the main column, without having to resize the browser.
+    Solution: Use a collapsible sidebar.
+
+        Add an X in a span element at the top of the sidebar. Include a custom data-expand attribute set to "true", to
+        track whether the column is expanded or not. Also include tabindex="0", so that the element can receive keypress
+        events:
+
+            <div>
+                <p id="x" data-expand="true" tabindex="0">
+                <span style="text-decoration: underline">X</span>
+                Collapse sidebar </p>
+            </div>
+
+        Add a method handler to the element's click and keypress events events that checks the data-expand attribute to
+        see if the column is currently expanded or not. If it is expanded, the column is collapsed, and the main column
+        expanded; if not, the sidebar and main column are returned to their regular dimensions.

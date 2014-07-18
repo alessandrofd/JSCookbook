@@ -10,3 +10,4 @@ chapter 10 - Debugging and Error Handling
 chapter 11 - Accessing Page Elements
 chapter 12 - Creating and Removing Elements and Attributes
 chapter 13 - Working with Web Page Spaces
+chapter 14 - Creating Interactive and Accessible Effects with JavaScript, CSS, and ARIA

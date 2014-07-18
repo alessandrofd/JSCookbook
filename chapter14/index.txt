@@ -1,0 +1,20 @@
+14.1 - Displaying a Hidden Page Section
+    Problem: You want to hide or show a page section, as needed.
+    Solution: If there's a good likelihood of the page section being needed, you can embed it in the page and display it
+        when needed.
+
+14.2 - Creating an Alert Message
+    Problem: You want to alert the reader to important information.
+    Solution: Create a visually distinctive alert message in the web page, and ensure it's noticed by AT devices.
+
+14-3 - Highlighting Form Field with Missing or Incorrect Data
+    Problem: You want to highlight missing or incorrectly entered information in a form field.
+    Solution: For the fields that need to be validated, assign a function to the form field's onchange event handler that
+        checks whether the field value is valid. If the value is invalid, pop up an alert with information about error,
+        and highlight the field using a contrasting color.
+
+        For the fields that need a required value, assign a function to the field's onblur event handler that checks
+        whether a values has been entered.
+
+        If any of the validation checks are performed as part of the form submittal, make sure to cancel the submittal
+        event if the validation fails.

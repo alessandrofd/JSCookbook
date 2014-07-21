@@ -31,3 +31,8 @@
     Problem: You want to encapsulate form elements into collapsible sections, and expand when a label is clicked.
     Solution: Use an accordion widget in combination with the aria-hidden and aria-expanded states, the tablist, tab,
         and tabpanel roles, and the aria-labeledby relationship indicator.
+
+14.6 - Displaying a Flash of Color to Signal an Action
+    Problem: Based os some action, you want to display a visual cue to signify the success of the action.
+    Solution: Use a flash to signal the success or failure of an action. The use of a red flash is standard to signal
+        either a successful update, or action.

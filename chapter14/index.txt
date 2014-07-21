@@ -18,3 +18,16 @@
 
         If any of the validation checks are performed as part of the form submittal, make sure to cancel the submittal
         event if the validation fails.
+
+    Source Code: example14_1.html
+
+14.4 - Adding Keyboard Accessibility to a Page Overlay
+    Problem: You've created a page overlay in order to display a larger image (or text,or other content), and you want
+        it to be keyboard accessible.
+    Solution: Add keyboard listening to the page to complement the mouse events.
+    Source Code: example14_2.html
+
+14.5 - Creating Collapsible Form Sections
+    Problem: You want to encapsulate form elements into collapsible sections, and expand when a label is clicked.
+    Solution: Use an accordion widget in combination with the aria-hidden and aria-expanded states, the tablist, tab,
+        and tabpanel roles, and the aria-labeledby relationship indicator.

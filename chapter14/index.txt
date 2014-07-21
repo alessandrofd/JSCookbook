@@ -36,3 +36,17 @@
     Problem: Based os some action, you want to display a visual cue to signify the success of the action.
     Solution: Use a flash to signal the success or failure of an action. The use of a red flash is standard to signal
         either a successful update, or action.
+
+14.7 - Adding ARIA Attributes to a Tabbed Page Application
+    Problem: You want to split the page contents into separate panels, and only display one at a time. You also want the
+        application to be accessible.
+    Solution: Use a tabbed page application and include the ARIA roles tablist, tabpane, and tab, as well as the
+        aria-hidden state.
+
+14.8 - Live Region
+    Problem: You have a section of a web page that is updated periodically, such as a page section that lists recent
+        updates to a file, or one that reflects recent Twitter activity on a subject. You want to ensure that when the
+        page updates, those using a screen reader are updated with the new information.
+    Solution: Use ARIA region attributes on the element being updated:
+
+            <ul id="update" role="log" aria-alive="polite" aria-atomic="true" aria-relevant="additions"></ul>

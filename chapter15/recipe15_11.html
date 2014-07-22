@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 15.11 - Running a Routine When an Audio File Begins Playing</title>
+    <script>
+        function manageEvent(eventObj, event, eventHandler) {
+            if (eventObj.addEventListener) {
+                eventObj.addEventListener(event, eventHandler, false);
+            } else if (eventObj.attachEvent) {
+                eventObj.attachEvent("on" + event, eventHandler);
+            }
+        }
+
+        window.onload = function() {
+            var meadow = document.getElementById("meadow");
+            manageEvent(meadow, "ended", aboutAudio)
+        };
+
+        function aboutAudio() {
+            var txt = document.createTextNode("This audio file was a recording from the Shaw Nature Reserve in Missouri");
+            var div = document.createElement("div");
+            div.appendChild(txt);
+            div.setAttribute("role", "alert");
+            document.body.appendChild(div);
+        }
+    </script>
+</head>
+<body>
+    <audio id="meadow" controls>
+        <source src="meadow.mp3" type="audio/mpeg3" />
+        <source src="meadow.ogg" type="audio/ogg"/>
+        <source src="meadow.wav" type="audio/wav"/>
+
+        <p><a href="meadow.mp3">Meadow sounds</a></p>
+    </audio>
+</body>
+</html>

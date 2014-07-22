@@ -89,4 +89,97 @@
                 setInterval("setClock(new Date())", 1000);
             </script>
 
-    Source Code: example15_7.html
+    Source Code: clock.svg
+
+15.9 - Integrating SVG and the Canvas Element in HTML
+    Problem: You want to use the canvas element and SVG together within a web page.
+    Solution: One option is to embed both the SVG and the canvas element directly into the HTML page, and then access
+        the canvas element from script from within SVG:
+
+            <canvas id="myCanvas" width="400px" height="100px">
+                <p>canvas item alternate content</p>
+            </canvas>
+
+            <svg id="svgelem" height="400", xmlns="http://www.w3.org/2000/svg">
+                <title>SVG Circle</title>
+                <script type="text/javascript">
+                    <![CDATA[
+                        window.onload = function() {
+                            var context = document.getElement("myCanvas").getContext('2d');
+                            context.fillStyle = 'rgba(0, 200, 0, 0.7)';
+                            context.fillRect(0, 0, 100, 100);
+                        };
+                    ]]>
+                </script>
+                <circle id="redcircle" cx="300" cy="100" r="100" fill="red" stroke="#000" />
+            </svg>
+
+        Or you can embed the canvas element as a foreign object directly in the SVG:
+
+            <svg id="svgelem" height="400"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+                <title>SVG Circle with metadata</title>
+                <script type="text/javascript">
+                    <![CDATA[
+                        window.onload = function() {
+                            var context2 = document.getElementById("thisCanvas").getContext('2d');
+                            context2.fillStyle = "#ff0000";
+                            context2.fillRect(0, 0, 200, 200);
+                        };
+                    ]]>
+                </script>
+
+                <foreignObject width="300" height="150">
+                    <xhtml:canvas width="300" height="150" id="thisCanvas">
+                        alternate content for browsers that do not support Canvas
+                    </xhtml:canvas>
+                </foreignObject>
+                <circle id="redcircle" cx="300" cy="100" r="100" fill="red" stroke="#000" />
+            </svg>
+
+15.10 - Turning on WebGL Support in Firefox and WebKit/Safari
+
+15.11 - Running a Routine When an Audio File Begins Playing
+    Problem: You want to provide an audio file and then pop up a question or other information when the audio file
+        begins or ends playing.
+    Solution: Use the new HTML5 audio element:
+
+            <audio id="meadow" controls>
+                <source src="meadow.mp3" type="audio/mpeg3"/>
+                <source src="meadow.ogg" type="audio/ogg"/>
+                <source src="meadow.wav" type="audio/wav"/>
+
+                <p><a href="meadow.wav">Meadow sounds</a></p>
+            </audio>
+
+        and capture its end or play event:
+
+            function() manageEvent(eventObj, event, eventHandler) {
+                if (eventObj.addEventListener) {
+                    eventObj.addEventListener(event, eventHandler, false);
+                } else if (eventObj.attachEvent) {
+                    eventObj.attachEvent("on"+event, eventHandler);
+                }
+            }
+
+            window.onload = function() {
+                var meadow = document.getElementById("meadow");
+                manageEvent(meadow, "play", aboutAudio);
+            };
+
+        then display the information:
+
+            function aboutAudio() {
+                var txt = document.createTextNode("This audio file was a recording from the Shaw Nature Reserve in Missouri");
+                var div = document.createElement("div");
+                div.appendChild(txt);
+                div.setAttribute("role", "alert");
+                document.body.appendChild(div);
+            }
+
+15.12 - Controlling Video from JavaScript with the video Element
+    Problem: You want to embed video in your web page, and not use Flash. You also want a consistent look for the video
+        control, regardless of browser and operations system.
+    Solution: Use the new video element.

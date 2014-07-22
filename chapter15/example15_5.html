@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Example 15.5 - SVG in Object</title>
+</head>
+<body>
+    <object id="object" data="rect.svg" style="padding: 20px; width: 600px; height: 600px">
+        <p>No SVG support</p>
+    </object>
+    <script>
+        var object = document.getElementById("object");
+        object.onload = function() {
+            var svgdoc;
+            try {
+                svgdoc = object.contentDocument;
+            } catch (e) {
+                try {
+                    svgdoc = object.getSVGDocument();
+                } catch (e) {
+                    alert("SVG in object not supported in your environment");
+                }
+            }
+            if (!svgdoc) return;
+            var r = svgdoc.rootElement;
+
+            // get SVG element and modify
+            var square = svgdoc.getElementById("square");
+            square.onclick = function() {
+                // SVG supports namespaces
+                var width = parseFloat(square.getAttributeNS(null, "width"));
+                width -= 50;
+                square.setAttributeNS(null, "width", width);
+
+                var color = square.getAttributeNS(null, "fill");
+                if (color == "blue") {
+                    square.setAttributeNS(null, "fill", "yellow");
+                    square.setAttributeNS(null, "stroke", "green");
+                } else {
+                    square.setAttributeNS(null, "fill", "blue");
+                    square.setAttributeNS(null, "stroke", "red");
+                }
+            }
+        };
+
+    </script>
+</body>
+</html>

@@ -1,1 +1,92 @@
 15.1 - Creating Basic Shapes in Canvas
+    Problem: You want to create multiple shapes, such as overlapping squares, in the canvas element.
+    Solution: Insert a canvas element into the web page. Then use the Canvas 2D API to create the shapes.
+
+15.2 - Implementing Canvas Applications in IE
+
+15.3 - Creating a Dynamic Line Chart in Canvas
+    Problem: You want to display a line chart in your web page, but the data changes over time, and you want to
+        dynamically update it.
+    Solution: Use the canvas element and the path method to create the chart. When the data changes, update the chart.
+
+15.4 - Adding JavaScript to an SVG File
+    Problem: You want to add JavaScript to an SVG file or element.
+    Solution: JavaScript in SVG is included in script elements, just as with XHTML. The DOM methods are also available
+        for working with the SVG elements. One restriction for SVG that you don't have with HTML is that SVG is XML, so
+        script blocks in an SVG file or element must have CDATA sections surrounding the actual script.
+    Source Code: example15_4.xhtml
+
+15.5 - Accessing SVG from Web Page Script
+    Problem: You want to modify the contents of an SVG element from script within the web page.
+    Solution: If the SVG is embedded directly in the web page, access the element and its attributes using the same
+        functionality you would use with any other web page element:
+
+            var square = document.getElementById("square");
+            square.setAttributeNS(null, "width", "500");
+
+        However, if the SVG is in an external SVG file embedded into the page via an object element, you have to get the
+        document for the external SVG file in order to access the SVG elements. The technique requires object detection
+        because the process differs by browser:
+
+            // set element onclick event handler
+            window.onload = function() {
+                var object = document.getElementById("object");
+                var svgdoc;
+                try {
+                    svgdoc = object.contentDocument;
+                } catch (e) {
+                    try {
+                        svgdoc = object.getSVGDocument();
+                    } catch (e) {
+                        alert("SVG in object not supported in your environment");
+                    }
+                }
+                if (!svgdoc) return;
+
+                var square = svgdoc.getElementById("square");
+                square.setAttributeNS(null, "width", "500");
+            };
+
+    Source Code: example15_5.html
+
+15.6 - Emulating SVG in Internet Explorer
+
+15.7 - Enable Interactive SVG Embedded in HTML
+    Problem: You want to embed SVG into an HTML page without having to use XHTML.
+    Solution: You have two options: you can use HTML5 to create the web page and waint until SVG is supported in all of
+        your targeted browsers. Or you can use a JavaScript library, such as SVGWeb, to wrap your SVG:
+
+            <script type="image/svg+xml">
+                <svg...>
+                    ...
+                </svg>
+            </script>
+
+15.8 - Using the Math Functions to Create Realistic, Ticking Analog Clock in SVG
+    Problem: You want to embed an animated analog clock into your site's sidebar.
+    Solution: Use SVG to create the clock, utilizing both the Date object and the Math objects, in addition to a timer
+        to manage the clock hands. The JavaScript to manage the hands is a derivative of other applications that also
+        implement analog clocks, such as Java applets from long ago:
+
+            <script>
+                var seconds = document.getElementById("seconds");
+                var minutes = document.getElementById("minutes");
+                var hours = document.getElementById("hours");
+
+                function setClock(date) {
+                    var s = (date.getSeconds() + date.getMilliseconds() / 1000) * Math.PI / 30;
+                    var m = date.getMinutes() * Math.PI / 30 + s / 60;
+                    var h = date.getHours() * Math.PI / 6 + m / 12;
+
+                    seconds.setAttribute("x2", 0.90 * Math.cos(s));
+                    seconds.setAttribute("y2", 0.90 * Math.sin(s));
+                    minutes.setAttribute("x2", 0.65 * Math.cos(m));
+                    minutes.setAttribute("y2", 0.65 * Math.sin(m));
+                    hours  .setAttribute("x2", 0.40 * Math.cos(h));
+                    hours  .setAttribute("y2", 0.40 * Math.sin(h));
+                }
+
+                setInterval("setClock(new Date())", 1000);
+            </script>
+
+    Source Code: example15_7.html

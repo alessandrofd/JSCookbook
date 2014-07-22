@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 16.2 - Keeping Object Members Private</title>
+    <script>
+        function Tune(song, artist) {
+            var title = song;
+            var artist = artist;
+            this.concat = function() {
+                return title + " " + artist;
+            }
+        }
+
+        window.onload = function() {
+            var happySongs = new Array();
+            happySongs[0] = new Tune("Putting on the Ritz", "Ella Fitzgerald");
+
+            //error
+            try {
+                alert(happySongs[0].title);
+            } catch (e) {
+                alert(e);
+            }
+
+            // prints out correct title and artist
+            alert(happySongs[0].concat());
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

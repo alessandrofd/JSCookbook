@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 16.5 - Inheriting an Object's Functionality (Example - Constructor Chaining)</title>
+    <script>
+        function Book(title, author) {
+            var title = title;
+            var author = author;
+            this.getTitle = function() { return "Title: " + title; };
+            this.getAuthor = function() { return "Author: " + author; };
+        }
+
+        function TechBook(title, author, category) {
+            var category = category;
+            this.getCategory = function() { return "Technical Category: " + category; };
+            Book.apply(this, arguments);
+            this.getBook = function() { return this.getTitle() + " " + author + " " + this.getCategory(); };
+        }
+
+        window.onload = function() {
+            // chain the object constructors
+            TechBook.prototype = new Book();
+
+            // get all values
+            var newBook = new TechBook("The JavaScript Cookbook", "Shelley Powers", "Programming");
+            alert(newBook.getBook());
+
+            // now, individually
+            alert(newBook.getTitle());
+            alert(newBook.getAuthor());
+            alert(newBook.getCategory());
+        }
+    </script>
+</head>
+<body>
+    <p>Some content</p>
+</body>
+</html>

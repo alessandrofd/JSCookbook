@@ -1,0 +1,60 @@
+16.1 - Defining a Basic JavaScript Object
+    Problem: You want to create a custom, reusable JavaScript object.
+    Solution: Define a new object explicitly using functional syntax, and then create new instances, passing in the data
+        the object constructor is expecting
+
+16.2 - Keeping Object Members Private
+    Problem: You want to keep one or more object properties private, so they can't be accessed outside of the object
+        instance.
+    Solution: When creating the private data members, do not use the this keyword with the member.
+
+16.3 - Expanding Objects with Prototype
+    Problem: You want to extend an existing object with a new method.
+    Solution: Use the Object prototype to extend the object:
+
+            Tune.prototype.addCategory = function(categoryName) {
+                this.category = categoryName;
+            }
+
+16.4 - Adding Getter/Setter to Objects
+    Problem: You want to provide access to protected data.
+    Solution: Use the getter/setter functionality introduced with ECMAScript 3.1 with your (or outside objects.
+
+16.5 - Inheriting an Object's Functionality
+    Problem: When creating a new object type, you want to inherit the functionality of an existing JavaScript object.
+    Solution: Use the concept of constructor chaining and the Function.apply method to emulate traditional class
+        inheritance behavior in JavaScript:
+
+            function oldObject(param1) {
+                this.param1 = param1;
+                this.getParam = function() { return this.param1; };
+            }
+
+            function newObject(param1, param2) {
+                this.param2 = param2;
+                this.getParam2 = function() { return this.param2; };
+                oldObject.apply(this, arguments);
+                this.getAllParameters = function() { this.getParam() + " " + this.getParam2(); };
+            }
+
+            window.onload = function() {
+                newObject.prototype = new oldObject();
+                var obj = new newObject("value1", "value2");
+
+                // prints out both parameters
+                alert(obj.getAllParameters());
+            };
+
+16.6 - Extending an Object by Defining a New Property
+    Problem: You want to extend an existing object by adding a new property, but without changing the object's
+        construction function.
+    Solution: Use the new ECMAScript Object.defineProperty method to define one property:
+
+            Object.defineProperty(newBook, "publisher", {
+                value: "O'Reilly",
+                writable: false,
+                enumerable: true,
+                configurable: true});
+
+16.7 -
+

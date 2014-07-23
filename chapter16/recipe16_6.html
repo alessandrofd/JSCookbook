@@ -81,13 +81,17 @@
                 newBook.experience = "intermediate";
                 alert(newBook.experience);
 
-                // test.data descriptor
+                // test data descriptor
                 Object.defineProperty(newBook, "publisher", {
                     value: "O'Reilly",
                     writable: false,
                     enumerable: true,
-                configurable = true});
-                };
+                    configurable: true});
+
+                // test writable
+                newBook.publisher = "Some Other";
+                alert(newBook.publisher);
+
             } catch (e) {
                 alert(e);
             }

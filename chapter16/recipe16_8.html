@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 16.8 - Preventing Object Extensibility</title>
+    <script>
+        window.onload = function() {
+            "use strict";
+
+            var Test = {
+                value1: "one",
+                value2: function() { return this.value1; }
+            };
+
+            try {
+                Object.preventExtensions(Test);
+
+                // the following fails, and throws an exception is Strict mode
+                Test.value3 = "test";
+            } catch (e) {
+                alert(e);
+            }
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

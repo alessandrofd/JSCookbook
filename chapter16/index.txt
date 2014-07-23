@@ -56,5 +56,40 @@
                 enumerable: true,
                 configurable: true});
 
-16.7 -
+16.7 - Enumerating an Object's Properties
+    Problem: You want to see what properties an object has.
+    Solution: Use a specialized variation of the for loop to iterate through the properties:
+
+            for (var prop in obj) {
+                alert(prop); // prints out the property name
+            }
+
+        or use the new ECMAScript 5 Object.keys method to return the names for all properties that can be enumerated:
+
+            alert(Object.keys(obj).join(", "));
+
+        or use another new ECMAScript 5 method, Object.getOwnPropertyNames(obj), to get the names of all properties,
+        whether they can be enumerated or not:
+
+            var props = Object.getOwnPropertyNames(obj):
+
+16.8 - Preventing Object Extensibility
+    Problem: You want to prevent others from extending an object.
+    Solution: Use the new ECMAScript 5 Object.preventExtensions method to lock an object against future additions:
+
+            "use strict";
+
+            var Test = {
+                value1 : "one",
+                value2 : function() { return this.value1; }
+            }
+
+            try {
+                Object.preventExtensions(Test);
+
+                // the following fails, and throws an exception in Strict mode
+                Test.value3 = "test";
+            } catch (e) {
+                alert(e);
+            }
 

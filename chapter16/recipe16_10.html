@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 16. 10 - Preventing Any Changes to an Object</title>
+    <script>
+        window.onload = function() {
+            "use script";
+
+            var Test = {
+                value1: "one",
+                value2: function() { return this.value1; }
+            };
+
+            try {
+                // freeze the object
+                Object.freeze(Test);
+
+                // the following would throw an error in Strict Mode
+                // Obs: in Chrome the property is not added as expected, but an error is not thrown
+                Test.value2 = "two";
+
+                // so would the following
+                Test.newProperty = "value";
+
+                // and so would the following
+
+                Object.defineProperty(Title, "category", {
+                    get: function() { return category; },
+                    set: function(value) { category = value; },
+                    enumerable: true,
+                    configurable: true
+                });
+
+            } catch (e) {
+                alert(e);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

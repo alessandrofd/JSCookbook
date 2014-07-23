@@ -93,3 +93,63 @@
                 alert(e);
             }
 
+16.9 - Preventing Object Additions and Changes to Property Descriptors
+    Problem: You want to prevent extensions to an object, but you also want to disallow someone from changing the
+        property descriptor for an object.
+    Solution: Use the new ECMAScript Object.seal method to seal the object against additions and modification of its
+        property descriptor.
+
+
+16.10 - Preventing Any Changes to an Object
+    Problem: You've defined your object, and now you want to make sure that its properties aren't redefined or edited by
+        other applications using the object.
+    Solution: Use the new ECMAScript 5 Object.freeze method to freeze the object against any and all changes.
+
+16.11 - One-Off Objects and Namespacing Your JavaScript
+    Problem: You want to encapsulate your library functionality in such a way as to prevent clashes with other libraries.
+    Solution: Use an object literal, what I call a one-off object, to implement the JavaScript version of namespacing. An
+        example is the following:
+
+            var jscbObject = {
+                // return element
+                getElem: function(identifier) { return document.getElementById(identifier); },
+                stripSlashes: function(str) { return str.replace(/\\/g, ''); },
+                removeAngleBrackets : function(str) { return str.replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+            };
+
+            var incoming = jscbObject.getElem("incoming");
+            var content = incoming.innerHTML;
+
+            var result = jscbObject.stripSlashes(content);
+            result = jscbObject.removeAngleBrackets(result);
+
+            jscbObject.getElem("result").innerHTML = result;
+
+16.12 - Rediscovering "this" with bind
+    Problem: You want to control the scope assigned to a given function.
+    Solution: Use the new ECMAScript 5 function bind method:
+
+            window.onload = function() {
+                window.name = "window";
+
+                var new Obj = {
+                    name: "object",
+                    sayGreeting: function() {
+                        alert("Now this is easy, " + this.name);
+                        nestedGreeting = function(greeting) {
+                            alert(greeting + "  " + this.name);
+                        }.bind(this);
+                        nestedGreeting("hello");
+                    }
+                };
+                newObject.sayGreeting("hello");
+            }
+
+16.13 - Chaining Your Object's Methods
+    Problem: You wish to define your object's methods in such a way that more than one can be used at the same time, like
+        the following, which retrieves a reference to a page element and sets the element's style property:
+
+            document.getElementById("elem").setAttribute("class", "buttondiv");
+
+    Solution: The ability to directly call one function on the result of another in the same line of code is known as
+        method chaining. It requires specialized code in whatever method you want to chain.

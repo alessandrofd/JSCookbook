@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 16.12 - Rediscovering "this" with bind (Example 16.4)</title>
+    <style>
+        #item { font-size: 72pt; margin: 70px auto; width: 100px; }
+    </style>
+    <script>
+        if (!Function.bind) {
+            Function.prototype.bind = function(scope) {
+                var _function = this;
+                return function() {
+                    return _function.apply(scope, arguments);
+                }
+            };
+        }
+
+        window.onload = function() {
+            var theCounter = new Counter('item', 10, 0);
+            theCounter.countDown();
+        };
+
+        function Counter(id, start, finish) {
+            this.count = this.start = start;
+            this.finish = finish;
+            this.id = id;
+            this.countDown = function() {
+                if (this.count == this.finish) {
+                    this.countDown = null;
+                    return;
+                }
+                document.getElementById(this.id).innerHTML = this.count--;
+                setTimeout(this.countDown.bind(this), 1000);
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="item">10</div>
+</body>
+</html>

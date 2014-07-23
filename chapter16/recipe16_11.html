@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Recipe 16.11 - One-Off Objects and Namespacing Your JavaScript</title>
+    <script>
+        window.onload = function() {
+
+           var jscbObject = {
+               // return element
+               getElem: function(identifier) { return document.getElementById(identifier); },
+               stripSlashes: function(str) { return str.replace(/\\/g, ''); },
+               removeAngleBrackets: function(str) { return str.replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+           };
+
+            var incoming = jscbObject.getElem("incoming");
+            var content = incoming.innerHTML;
+
+            var result = jscbObject.stripSlashes(content);
+            result = jscbObject.removeAngleBrackets(result);
+
+            jscbObject.getElem("result").innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+    <div id="incoming">This is a <em>test</em> of \object\ literal</div>
+    <div id="result"></div>
+</body>
+</html>
